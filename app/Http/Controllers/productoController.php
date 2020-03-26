@@ -17,9 +17,9 @@ class productoController extends Controller
     {
 //$request->user()->authorizeRoles('admin');
 
-      $producto = producto::all();
+      $productos = producto::all();
 
-       return view('altas.mostrarprod', compact('producto'));
+       return view('altas.mostrarprod', compact('productos'));
     }
 
    

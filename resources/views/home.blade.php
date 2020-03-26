@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('plantilla')
 
-@section('content')
+@section('contenido')
 
 
 <div class="container">
@@ -34,12 +34,12 @@
                     @endif
 
                    <div class="row">
- <a class="nav-link active" href="/producto">Productos</a>
- <a class="nav-link active" href="/sucursal">Sucursal</a>
- <a class="nav-link active" href="/principal">Promocion</a>
- <a class="nav-link active" href="/orden">Orden</a>
- <a class="nav-link active" href="/user">Usuarios</a>
-  </div>
+                    <a class="nav-link active" href="{{ route('producto.index') }}">Productos</a>
+                    <a class="nav-link active" href="{{ route('sucursal.index') }}">Sucursal</a>
+                    <a class="nav-link active" href="{{ route('principal.index') }}">Promocion</a>
+                    {{-- <a class="nav-link active" href="{{ route('orden.index') }}">Orden</a> --}}
+                    <a class="nav-link active" href="{{ route('user.index') }}">Usuarios</a>
+                      </div>
 
 
 

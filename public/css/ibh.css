@@ -1,0 +1,12 @@
+.tarjeta-promocion{
+    max-width: 30rem;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.fondo-tabla, .fondo-formulario{
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+}
