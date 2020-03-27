@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">Contenido</div>
                 <div class="card-body">
-                  <h1>Home</h1>
+                  <h1>Este es el inicio nuevo</h1>
                 </div>
             </div>
         </div>
