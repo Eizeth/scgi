@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('plantilla')
 
 @section('title', 'Producto')
 
-@section('content')
-<a href="/producto" class="btn btn-primary">Volver</a>
+@section('contenido')
+<a href="{{ route('producto.index') }}" class="btn btn-primary">Volver</a>
 
 @if(session('status'))
 	<div class="alert alert-success">
@@ -18,11 +18,14 @@
 				<h2>{{$producto->stock}}</h2>
 				<h1>{{$producto->slug}}</h1>
 
-			<a href="/producto/{{$producto->slug}}/edit" class="btn btn-primary">Editar</a>
+			<a href="{{ route('producto.edit',$producto->idprod) }}" class="btn btn-primary">Editar</a>
 
-			{!!Form::open(['route'=>['producto.destroy',$producto->slug], 'method'=>'DELETE'])!!}
-			{!!Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
-			{!!Form::close()!!}
+
+			<form action="{{ route('producto.destroy',$producto->idprod) }}" method="POST">
+				@csrf
+				@method('DELETE')
+				<button type="submit" class="btn btn-danger">Eliminar</button>
+			</form>
 		</div>	
 
 

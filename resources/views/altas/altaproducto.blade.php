@@ -1,10 +1,8 @@
-@extends('layouts.app')
+@extends('plantilla')
 
 @section('title', 'alta producto')
 
-@section('content')
-<br>
-<a href="/producto" class="btn btn-primary">Atras</a>
+@section('contenido')
 
 <br>
    @if ($errors->any())

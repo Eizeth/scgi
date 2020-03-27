@@ -1,3 +1,6 @@
+@guest
+  <script>window.location.replace("{{url('/')}}");</script>
+@else
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +34,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/home') }}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-leaf"></i>
         </div>
@@ -71,26 +74,26 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesucursales" aria-expanded="true" aria-controls="collapsesucursales">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseusuarios" aria-expanded="true" aria-controls="collapseusuarios">
           <i class="fas fa-fw fa-store"></i>
-          <span>Promociones</span>
+          <span>Usuarios</span>
         </a>
-        <div id="collapsesucursales" class="collapse" data-parent="#accordionSidebar">
+        <div id="collapseusuarios" class="collapse" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ route('sucursal.index') }}">Ver lista</a>
-            <a class="collapse-item" href="{{ route('sucursal.create') }}">Agregar</a>
+            <a class="collapse-item" href="{{ route('user.index') }}">Ver lista</a>
+            <a class="collapse-item" href="{{ route('user.create') }}">Agregar</a>
           </div>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesucursales" aria-expanded="true" aria-controls="collapsesucursales">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsepromociones" aria-expanded="true" aria-controls="collapsepromociones">
           <i class="fas fa-fw fa-store"></i>
-          <span>Usuarios</span>
+          <span>Promociones</span>
         </a>
-        <div id="collapsesucursales" class="collapse" data-parent="#accordionSidebar">
+        <div id="collapsepromociones" class="collapse" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ route('sucursal.index') }}">Ver lista</a>
-            <a class="collapse-item" href="{{ route('sucursal.create') }}">Agregar</a>
+            <a class="collapse-item" href="{{ route('principal.index') }}">Ver lista</a>
+            <a class="collapse-item" href="{{ route('principal.create') }}">Agregar</a>
           </div>
         </div>
       </li>
@@ -157,14 +160,6 @@
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              @guest
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                  </li>
-              @else
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
@@ -192,7 +187,6 @@
                       @csrf
                   </form>
                 </div>
-                @endguest
             </li>
 
           </ul>
@@ -239,5 +233,5 @@
   <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
 </body>
-
 </html>
+@endguest

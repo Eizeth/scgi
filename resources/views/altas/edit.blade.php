@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('plantilla')
 
 @section('title', 'Editar producto')
 
-@section('content')
+@section('contenido')
 
 
 <br>
-<a href="/producto" class="btn btn-primary">Atras</a>
+<a href="{{ route('producto.show',$producto->idprod) }}" class="btn btn-primary">Atras</a>
 
 <br>
 
