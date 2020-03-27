@@ -31,13 +31,13 @@ class SucurController extends Controller
         $sucursal->stel = $request->input('stel');
         $sucursal->save();
 
-       return redirect()->route('sucursal.index');
+       return redirect()->route('sucursal.mostrarsucur');
     }
 
-    public function show(request $request)
+    public function show(sucursal $sucursal)
     {
-        return $request;
-        //return view ('sucursal.show', compact('sucursal'));
+        // print_r($sucursal);
+        return view ('sucursal.show', compact('sucursal'));
     }
 
    
@@ -58,6 +58,6 @@ class SucurController extends Controller
     public function destroy(sucursal $sucursal)
     {
         $sucursal->delete();
-        return redirect()->route('sucursal.index');
+        return redirect()->route('sucursal.mostrarsucur');
     }
 }

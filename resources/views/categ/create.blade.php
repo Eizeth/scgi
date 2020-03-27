@@ -5,8 +5,6 @@
 @section('contenido')
 
 <br>
-<a href="/categorias" class="btn btn-primary">Atras</a>
-<br>
 
  @if ($errors->any())
         <div class="alert alert-danger">

@@ -3,12 +3,6 @@
 @section('title', 'alta promocion')
 
 @section('contenido')
-<!--clase de bootstrap-->
-
-<br>
-<a href="/home" class="btn btn-primary">Atras</a>
-
-<br>
 
 
 {!! Form::open(['route' => 'principal.store', 'method'=>'POST','files'=>true]) !!}

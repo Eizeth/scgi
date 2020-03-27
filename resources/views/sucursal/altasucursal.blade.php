@@ -5,10 +5,6 @@
 @section('contenido')
 
 <br>
-<a href="/home" class="btn btn-primary">Atras</a>
-
-<br>
-<!--clase de bootstrap-->
 
    @if ($errors->any())
         <div class="alert alert-danger">
