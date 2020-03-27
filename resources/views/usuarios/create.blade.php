@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('plantilla')
 
 @section('title', 'Usuarios')
 
-@section('content')
+@section('contenido')
 
 {!! Form::open(['route' => 'user.store', 'method'=>'POST']) !!}
 

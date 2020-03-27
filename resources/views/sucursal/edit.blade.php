@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('plantilla')
 
 @section('title', 'Editar sucursal')
 
-@section('content')
+@section('contenido')
 <br>
 <a href="/sucursal" class="btn btn-primary">Atras</a>
 

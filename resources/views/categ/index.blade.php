@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('plantilla')
 
 @section('title', 'Categoria')
 
-@section('content')
+@section('contenido')
 <br>
 <div class="text-center">
 <a href="/categorias/create" class="btn btn-primary">Nuevo </a>

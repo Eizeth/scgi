@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('plantilla')
 
 @section('title', 'categoria')
 
-@section('content')
+@section('contenido')
 
 	
 @endsection

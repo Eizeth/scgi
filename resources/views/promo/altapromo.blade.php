@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('plantilla')
  
 @section('title', 'alta promocion')
 
-@section('content')
+@section('contenido')
 <!--clase de bootstrap-->
 
 <br>

@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('plantilla')
 
 @section('title', 'promocion')
 
-@section('content')
+@section('contenido')
 <br>
 <a href="/home" class="btn btn-primary">Atras</a>
 
