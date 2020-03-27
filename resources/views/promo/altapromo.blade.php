@@ -3,17 +3,22 @@
 @section('title', 'alta promocion')
 
 @section('contenido')
-<!--clase de bootstrap-->
 
 <br>
 <a href="/home" class="btn btn-primary">Atras</a>
 
 <br>
 
-
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>       
+            @endforeach 
+            </ul>
+         </div>        
+    @endif
 {!! Form::open(['route' => 'principal.store', 'method'=>'POST','files'=>true]) !!}
-
-
     
     @include('promo.form')
 

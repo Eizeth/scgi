@@ -3,8 +3,10 @@
 @section('title', 'Editar sucursal')
 
 @section('contenido')
+
+
 <br>
-<a href="/sucursal" class="btn btn-primary">Atras</a>
+<a href="{{ route('sucursal.show',$sucursal->idsuc) }}" class="btn btn-primary">Atras</a>
 
 <br>
 
@@ -15,3 +17,6 @@
  {!!Form::submit('Actualizar',['class'=>'btn btn-primary'])!!}
 
 {!! Form::close() !!}
+
+
+@endsection

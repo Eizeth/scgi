@@ -4,17 +4,31 @@
 
 @section('contenido')
 
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>       
+            @endforeach 
+            </ul>
+         </div>        
+    @endif
+
+
 <br>
-<a href="/principal" class="btn btn-primary">Atras</a>
+<a href="{{ route('principal.index') }}" class="btn btn-primary">Atras</a>
+
 <br>
 
-{!! Form::model($promocion,['route'=>['principal.update', $promocion], 'method'=>'PUT'])!!}
+{!! Form::model($promocion,['route'=>['principal.update', $promocion], 'method'=>'PUT', 'files'=>true])!!}
 
  @include('promo.form')
 
  {!!Form::submit('Actualizar',['class'=>'btn btn-primary'])!!}
 
 {!! Form::close() !!}
+
+
 
 @endsection
 

@@ -1,27 +1,33 @@
 @extends('plantilla')
 
-@section('title', 'promocion')
+@section('title', 'Promocion')
 
 @section('contenido')
-<br>
-<a href="/home" class="btn btn-primary">Atras</a> <br>
+<a href="{{ route('principal.index') }}" class="btn btn-primary">Volver</a>
+
+@if(session('status'))
+	<div class="alert alert-success">
+		{{ session('status')}}
+	</div>
+@endif
 <div class="text-center">
-<a href="/principal/create" class="btn btn-primary">Nueva Promocion</a>
-</div>
-<br><br>
+			
+				<h1>{{$promocion->ptema}}</h1>
+				<p>{{$promocion->pcosto}}</p>
+				<h2>{{$promocion->pfecha}}</h2>  
+				<p>{{$promocion->pnsesion}}</p>
+				<p>{{$promocion->pdetalles}}</p>
 
-@foreach($promocion as $promocion)
+			<a href="{{ route('principal.edit',$promocion->idpromo) }}" class="btn btn-primary">Editar</a>
+			
 
-<div class="card">
- 
-  <div class="card-body">
-    <h3 class="card-title">Costo ${{$promocion->pcosto}}</h3>
-    <p class="card-text">{{$promocion->pdet}}</p>
-    <p class="card-text">{{$promocion->psesion}}</p>
-    <a href="/principal/{{$promocion->ptema}}" class="btn btn-primary">ver mas</a>
-  </div>
-</div>
 
-@endforeach
+			<form action="{{ route('principal.destroy',$promocion->idpromo) }}" method="POST">
+				@csrf
+				@method('DELETE')
+				<button type="submit" class="btn btn-danger">Eliminar</button>
+			</form>
+		</div>	
+
 
 @endsection

@@ -82,7 +82,7 @@ class productoController extends Controller
 
 /////////////////////////////////// ACTUALIZAR
 
-    public function update(Request $request, producto $producto)
+    public function update(StoreProdRequest $request, producto $producto)
     {
       $producto->fill($request->except('imagen'));
       if ($request->hasfile('imagen')) {

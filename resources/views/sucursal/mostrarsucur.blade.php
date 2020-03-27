@@ -1,6 +1,6 @@
 @extends('plantilla')
 
-@section('title', 'promocion')
+@section('title', 'Sucursal')
 
 @section('contenido')
 
