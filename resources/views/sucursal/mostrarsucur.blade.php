@@ -3,16 +3,8 @@
 @section('title', 'promocion')
 
 @section('contenido')
-<br>
-<a href="/home" class="btn btn-primary">Atras</a>
 
-<br>
 
-<div class="text-center">
-<a href="/sucursal/create" class="btn btn-primary">Nueva Sucursal</a>
-</div>
-<br>
-<br>
 @foreach($sucursal as $sucursal)
 
 <div class="card">
@@ -22,7 +14,9 @@
   </div>
   <div class="card-body">
     <p class="card-text">{{$sucursal->sdir}}</p>
-    <a href="/principal/{{$sucursal->idsucur}}/edit" class="btn btn-primary">Editar</a>
+
+    <a href="{{ route('sucursal.show',$sucursal->idsuc) }}" class="btn btn-primary">Ver mas</a>
+
   </div>
 </div>
 
