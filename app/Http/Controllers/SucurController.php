@@ -40,6 +40,10 @@ class SucurController extends Controller
 
     public function show(sucursal $sucursal)
     {
+<<<<<<< HEAD
+=======
+       // return $sucursal;
+>>>>>>> 80046dc7b8e3aafc7f7463d31bec6aa2f36af6f8
         // print_r($sucursal);
         return view ('sucursal.show', compact('sucursal'));
     }
@@ -63,6 +67,11 @@ class SucurController extends Controller
     public function destroy(sucursal $sucursal)
     {
         $sucursal->delete();
+<<<<<<< HEAD
+=======
+
+         return redirect()->route('sucursal.index');
+>>>>>>> 80046dc7b8e3aafc7f7463d31bec6aa2f36af6f8
         return redirect()->route('sucursal.mostrarsucur');
     }
 }

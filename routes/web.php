@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 //});
 
+<<<<<<< HEAD
 Route::resource('principal', 'principalcontroller');
 Route::resource('sucursal', 'sucurcontroller');
 Route::resource('producto','productoController');
@@ -33,6 +34,14 @@ Route::resource('pedido','PedidoController');
 
 
 
+=======
+Route::resource('/principal', 'principalcontroller');
+Route::resource('/sucursal', 'sucurcontroller');
+Route::resource('/producto','productoController');
+Route::resource('/categorias','CategoriasController');
+Route::resource('/user','UserController');
+Route::resource('/encargados','EncargadosController');
+>>>>>>> 80046dc7b8e3aafc7f7463d31bec6aa2f36af6f8
 //Route::resource('/tareas', 'TareasController');
 Auth::routes();
 

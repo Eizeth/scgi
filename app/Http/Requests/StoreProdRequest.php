@@ -32,7 +32,7 @@ class StoreProdRequest extends FormRequest
             'stock'=>'required',
             'formula'=>'required',
             'imagen'=>'required|image',
-            'slug'=>'required',
+            
         ];
     }
 }

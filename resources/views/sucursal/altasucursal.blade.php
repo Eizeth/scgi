@@ -16,10 +16,10 @@
          </div>        
     @endif
 
-{!! Form::open(['route' => 'sucursal.store', 'method'=>'POST','files'=>true]) !!}
-@include('sucursal.formsuc')
+{!! Form::open(['route' => 'sucursal.store', 'method'=>'POST') !!}
+    @include('sucursal.formsuc')
 
            {!!Form::submit('Guardar',['class'=>'btn btn-primary'])!!}
         
-        {!! Form::close() !!}
+{!! Form::close() !!}
 @endsection 

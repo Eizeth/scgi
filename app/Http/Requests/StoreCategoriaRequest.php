@@ -25,7 +25,7 @@ class StoreCategoriaRequest extends FormRequest
     {
          return [
             'catenom'=>'required',
-            'slug'=>'required',
+            
         ];
     }
 }

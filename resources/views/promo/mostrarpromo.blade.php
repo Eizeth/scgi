@@ -13,7 +13,7 @@
    
   </div>
   <div class="card-body">
-    <p class="card-text">{{$promocion->sdir}}</p>
+    <p class="card-text">{{$promocion->pfecha}}</p>
 
     <a href="{{ route('principal.show',$promocion->idpromo) }}" class="btn btn-primary">Ver mas</a>
 

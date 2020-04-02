@@ -3,30 +3,17 @@
 @section('title', 'Categoria')
 
 @section('contenido')
-<br>
-<div class="text-center">
-<a href="/categorias/create" class="btn btn-primary">Nuevo </a>
-</div>
-<br>
-<a href="/home" class="btn btn-primary">Atras</a>
-<br>
-		<div class="row">
-			@foreach($categoria as $categoria)
-				<div class="col-sm">
-					<div class="card text-center" style="width: 18rem; margin-top:60px ">
+
+			@foreach($categorias as $categorias)
+
+					<div class="card">
 				 	 	<div class="card-body">
-				    	<h5 class="card-title">{{$categoria->catenom}}</h5>
-				    	<br>
-				    		<a href="/categorias/{{$categoria->slug}}/edit" class="btn btn-primary">Editar</a>
-								<br>
-								<br>
-			{!!Form::open(['route'=>['categorias.destroy',$categoria->slug], 'method'=>'DELETE'])!!}
-			{!!Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
-			{!!Form::close()!!}
+				    	<h5 class="card-title">{{$categorias->catenom}}</h5>
+				    	<br>	
+						<a href="{{ route('categorias.show',$categorias->idcate) }}" class="btn btn-primary">Ver mas</a>
 				 		 </div>
 					</div>
-				</div>
+				
 			@endforeach
-		</div>
-
+	
 @endsection
