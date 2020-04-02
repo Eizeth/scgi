@@ -3,7 +3,7 @@
 namespace bodega\Http\Controllers;
 
 use Illuminate\Http\Request;
-use bodega\Promocion;
+use bodega\Promocion; 
 use bodega\Http\Requests\StorePromocionRequest;
 
 
@@ -12,7 +12,7 @@ class principalcontroller extends Controller
     
     public function index(Request $request)
     { 
-      $promocion = Promocion::all();
+      $promocion = Promocion::all(); 
 
        return view('promo.mostrarpromo', compact('promocion'));
     }
@@ -26,7 +26,7 @@ class principalcontroller extends Controller
 
     }
 
-    
+    //////////////////////////////////// ALMACENAR
     public function store(StorePromocionRequest $request)
     {
         $promocion = new Promocion();
@@ -35,37 +35,35 @@ class principalcontroller extends Controller
         $promocion->pfecha = $request->input('pfecha');
         $promocion->pnsesion = $request->input('pnsesion');
         $promocion->pdet = $request->input('pdet');
+       
         $promocion->save();
 
         return redirect()->route('principal.index');
     }
 
    
-    public function show( $id)
+    public function show( Promocion $promocion)
     {  
-     $promocion = promocion::find($id);
-    //  return $promocion;
+     //$promocion = promocion::find($id);
+    // return $promocion;
 
-   return view ('promo.show', compact('promocion'));
+  return view ('promo.show', compact('promocion'));
     }
 
     
-    public function edit( $id)
+    public function edit( Promocion $promocion)
     {
-           $promocion = promocion::find($id);
+         //  $promocion = promocion::find($id);
+   return view('promo.edit', compact('promocion'));
 
-
-     return view('promo.edit', compact('promocion'));
     }
 
    
-    public function update(Request $request, $id)
+    public function update( Request $request, Promocion $promocion)
     {
      
-      $promocion = promocion::find($id);
-
        $promocion->fill($request->all());
-      $promocion->save();
+       $promocion->save();
        //return 'Actualizado';
       return redirect()->route('principal.show',[$promocion])->with('status','Se actualizo correctamente');
     }
@@ -77,3 +75,4 @@ class principalcontroller extends Controller
          return redirect()->route('principal.index');
     }
 }
+   

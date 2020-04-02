@@ -12,11 +12,14 @@
 @endif
 
 <div class="text-center">
-			<img style="height: 200px; width: 400px; margin: 25px" class="card-img-top mx-auto d-blck"  src="/images/{{$producto->imagen}}" alt="">
+	
+	
+		<img style="height: 100px; width: 100px; margin: 25px" class="card-img-top mx-auto d-blck"  src="{{asset('images/'.$producto->imagen)}}" alt="">
+			
 				<h1>{{$producto->nom}}</h1>
 				<p>{{$producto->formula}}</p>
-				<h2>{{$producto->stock}}</h2>
-				<h1>{{$producto->slug}}</h1>
+				<h2>Stock del producto: {{$producto->stock}}</h2>
+				
 
 			<a href="{{ route('producto.edit',$producto->idprod) }}" class="btn btn-primary">Editar</a>
 

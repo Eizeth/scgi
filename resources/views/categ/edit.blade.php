@@ -3,9 +3,8 @@
 @section('title', 'Editar Categoria')
 
 @section('contenido')
-<br>
-<a href="/categorias" class="btn btn-primary">Atras</a>
-<br>
+
+<a href="{{ route('categorias.show',$categorias->idcate) }}" class="btn btn-primary">Atras</a>
 
 {!! Form::model($categorias,['route'=>['categorias.update', $categorias], 'method'=>'PUT'])!!}
 

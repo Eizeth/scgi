@@ -1,6 +1,6 @@
 @extends('plantilla')
 
-@section('title', 'Editar producto')
+@section('title', 'Editar encargados')
 
 @section('contenido')
 br>
@@ -15,12 +15,14 @@ br>
     @endif
 
 
+<br>
+<a href="{{ route('encargados.show',$encargados->idencargado) }}" class="btn btn-primary">Atras</a>
 
-<a href="{{ route('producto.show',$producto->idprod) }}" class="btn btn-primary">Atras</a>
+<br>
 
-{!! Form::model($producto,['route'=>['producto.update', $producto], 'method'=>'PUT', 'files'=>true])!!}
+{!! Form::model($encargados,['route'=>['encargados.update', $encargados], 'method'=>'PUT', 'files'=>true])!!}
 
- @include('altas.formprod')
+ @include('empleado.form')
 
  {!!Form::submit('Actualizar',['class'=>'btn btn-primary'])!!}
 

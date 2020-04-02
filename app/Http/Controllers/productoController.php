@@ -51,7 +51,7 @@ class productoController extends Controller
        $producto->stock = $request->input('stock');
        $producto->formula = $request->input('formula');
        $producto->imagen = $name;
-       $producto->slug = $request->input('slug');
+      
 
        $producto->save();
 

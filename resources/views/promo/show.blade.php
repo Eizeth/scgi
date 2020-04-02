@@ -18,16 +18,13 @@
 				<p>{{$promocion->pnsesion}}</p>
 				<p>{{$promocion->pdetalles}}</p>
 
-			<a href="{{ route('principal.edit',$promocion->idpromo) }}" class="btn btn-primary">Editar</a>
-			
+	<a href="{{ route('principal.edit', $promocion->idpromo) }}" class="btn btn-primary">Editar</a>
 
-
-			<form action="{{ route('principal.destroy',$promocion->idpromo) }}" method="POST">
-				@csrf
-				@method('DELETE')
-				<button type="submit" class="btn btn-danger">Eliminar</button>
-			</form>
+<form action="{{ route('principal.destroy',$promocion->idpromo) }}" method="POST">
+	@csrf
+	@method('DELETE')
+	<button type="submit" class="btn btn-danger">Eliminar</button>
+</form>
 		</div>	
-
 
 @endsection

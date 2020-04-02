@@ -9,11 +9,11 @@ use bodega\Http\Requests\StoreCategoriaRequest;
 class CategoriasController extends Controller
 {
    
-    public function index()
-    {
-     $categoria = Categorias::all();
+    public function index(Request $request)
+    { 
+     $categorias = Categorias::all();
 
-       return view('categ.index', compact('categoria'));
+       return view('categ.index', compact('categorias'));
     }
 
  
@@ -27,15 +27,13 @@ class CategoriasController extends Controller
     
 
 
-    public function store(StoreCategoriaRequest $request)
+    public function store(Request $request)
     {
         
-       $categoria = new Categorias();
- 
-       $categoria->catenom = $request->input('catenom');
-       $categoria->slug = $request->input('slug');
-
-       $categoria->save();
+       $categorias = new Categorias();
+        $categorias->catenom = $request->input('catenom');
+        
+        $categorias->save();
 
       return redirect()->route('categorias.index');
 
@@ -43,16 +41,16 @@ class CategoriasController extends Controller
     }
 
 
-    public function show(categorias $categorias)
+    public function show(Categorias $categorias)
     {
       
      // return $categoria;
 
-    return view('categ.edit', compact('categorias')); 
+    return view('categ.show', compact('categorias')); 
 
            }
 
-    public function edit(categorias $categorias)
+    public function edit(Categorias $categorias)
     {
 
         return view('categ.edit',compact('categorias'));
@@ -61,19 +59,19 @@ class CategoriasController extends Controller
 
 
     
-    public function update(Request $request, categorias $categorias)
+    public function update(Request $request, Categorias $categorias)
     {
-       
-      $categoria->save();
+      $categorias->fill($request->all()); 
+      $categorias->save();
        //return 'Actualizado';
-      return redirect()->route('categorias.show',[$categoria])->with('status','Se actualizo correctamente');
+      return redirect()->route('categorias.show',[$categorias])->with('status','Se actualizo correctamente');
     }
 
 
 
-    public function destroy(categorias $categorias)
+    public function destroy(Categorias $categorias)
     {
-        $categoria->delete();
+        $categorias->delete();
         return redirect()->route('categorias.index');
     }
 }
