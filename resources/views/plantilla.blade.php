@@ -48,6 +48,24 @@
         Administrar
       </div>
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsepedidos" aria-expanded="true" aria-controls="collapsepedidos">
+          <i class="fas fa-fw fa-box"></i>
+          <span>Pedidos</span>
+        </a>
+        <div id="collapsepedidos" class="collapse" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            @if (Auth::user()->roleid == 1)
+              <a class="collapse-item" href="{{ route('pedido.index') }}">Entregar</a>
+            @endif
+            @if (Auth::user()->roleid == 2)
+              <a class="collapse-item" href="{{ route('pedido.index') }}">Nuevo pedido</a>
+            @endif
+          </div>
+        </div>
+      </li>
+
+      @if (Auth::user()->roleid == 1)
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseproductos" aria-expanded="true" aria-controls="collapseproductos">
@@ -75,7 +93,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseusuarios" aria-expanded="true" aria-controls="collapseusuarios">
-          <i class="fas fa-fw fa-store"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Usuarios</span>
         </a>
         <div id="collapseusuarios" class="collapse" data-parent="#accordionSidebar">
@@ -85,15 +103,18 @@
           </div>
         </div>
       </li>
+      @endif
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsepromociones" aria-expanded="true" aria-controls="collapsepromociones">
-          <i class="fas fa-fw fa-store"></i>
+          <i class="fas fa-fw fa-ticket-alt"></i>
           <span>Promociones</span>
         </a>
         <div id="collapsepromociones" class="collapse" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('principal.index') }}">Ver lista</a>
-            <a class="collapse-item" href="{{ route('principal.create') }}">Agregar</a>
+            @if (Auth::user()->roleid == 1)
+              <a class="collapse-item" href="{{ route('principal.create') }}">Agregar</a>
+            @endif
           </div>
         </div>
       </li>
@@ -232,6 +253,7 @@
   <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
+  @yield('javascript')
 </body>
 </html>
 @endguest

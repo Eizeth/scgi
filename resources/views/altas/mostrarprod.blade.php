@@ -7,10 +7,6 @@
 
 				<div class="card text-center" style="width: 18rem; margin-top:60px ">
 						<img style="height: 100px; width: 100px; margin: 25px" class="card-img-top mx-auto d-blck"  src="{{asset('images/'.$producto->imagen)}}" alt="">
-<<<<<<< HEAD
-
-=======
->>>>>>> 10df75853d46945a99d4100608fef994934b0615
 						<div class="card-body">
 						<h5 class="card-title">{{$producto->codigo}}</h5>
 						<p class="card-text">{{$producto->formula}}</p>

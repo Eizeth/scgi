@@ -23,7 +23,7 @@
   <div class="card-body">
     <h3 class="card-title">Correo: {{$user->email}}</h3>
     <a href="/user/{{$user->name}}/edit" class="btn btn-primary">Editar</a>
-    {!!Form::open(['route'=>['user.destroy',$user->name], 'method'=>'DELETE'])!!}
+    {!!Form::open(['route'=>['user.destroy',$user->id], 'method'=>'DELETE'])!!}
 			{!!Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
 			{!!Form::close()!!}
   </div>

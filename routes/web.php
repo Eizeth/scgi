@@ -24,11 +24,12 @@ Route::get('/', function () {
 
 //});
 
-Route::resource('/principal', 'principalcontroller');
-Route::resource('/sucursal', 'sucurcontroller');
-Route::resource('/producto','productoController');
-Route::resource('/categorias','CategoriasController');
-Route::resource('/user','UserController');
+Route::resource('principal', 'principalcontroller');
+Route::resource('sucursal', 'sucurcontroller');
+Route::resource('producto','productoController');
+Route::resource('categorias','CategoriasController');
+Route::resource('user','UserController');
+Route::resource('pedido','PedidoController');
 
 
 
