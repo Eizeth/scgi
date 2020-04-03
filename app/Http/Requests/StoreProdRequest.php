@@ -27,9 +27,9 @@ class StoreProdRequest extends FormRequest
             'codigo'=>'required',
             'nom'=>'required',
             'cate'=>'required',
-            'neto'=>'required',
-            'cant'=>'required',
-            'stock'=>'required',
+            'neto'=>'required|numeric',
+            'cant'=>'required|numeric',
+            'stock'=>'required|numeric',
             'formula'=>'required',
             'imagen'=>'required|image',
             

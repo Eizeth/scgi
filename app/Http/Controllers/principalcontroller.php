@@ -22,7 +22,7 @@ class principalcontroller extends Controller
     {
     
         return view('promo.altapromo');
-       
+        
 
     }
 
@@ -47,7 +47,8 @@ class principalcontroller extends Controller
      //$promocion = promocion::find($id);
     // return $promocion;
 
-  return view ('promo.show', compact('promocion'));
+  // return view ('promo.show', compact('promocion'));
+      var_dump($promocion);
     }
 
     

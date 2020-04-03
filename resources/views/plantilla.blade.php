@@ -131,18 +131,7 @@
           </div>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseencargados" aria-expanded="true" aria-controls="collapsepromociones">
-          <i class="fas fa-fw fa-store"></i>
-          <span>Encargados</span>
-        </a>
-        <div id="collapseencargados" class="collapse" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ route('encargados.index')}}    ">Ver lista</a>
-            <a class="collapse-item" href="  {{ route('encargados.create')}}   ">Agregar</a>
-          </div>
-        </div>
-      </li>
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider">
