@@ -25,7 +25,7 @@ Route::get('/', function () {
 //});
 
 Route::resource('/principal', 'principalcontroller');
-Route::resource('/sucursal', 'sucurcontroller');
+Route::resource('/sucursal', 'SucurController');
 Route::resource('/producto','productoController');
 Route::resource('/categorias','CategoriasController');
 Route::resource('/user','UserController');

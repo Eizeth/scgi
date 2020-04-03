@@ -15,11 +15,7 @@
 			
 				<h1>{{$sucursal->snom}}</h1>
 				<p>{{$sucursal->sdir}}</p>
-				<h2>{{$sucursal->sencar}}</h2>  
-				<p>{{$sucursal->stel}}</p>
-
 				<h2>{{$sucursal->sencargado}}</h2>
-
 				
 
 			<a href="{{ route('sucursal.edit',$sucursal->idsuc) }}" class="btn btn-primary">Editar</a>

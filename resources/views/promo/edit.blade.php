@@ -16,11 +16,11 @@
 
 
 <br>
-<a href="{{ route('Principal.show',$promocion->idpromo) }}" class="btn btn-primary">Atras</a>
+<a href="{{ route('[principal.show',$promocion->idpromo) }}" class="btn btn-primary">Atras</a>
 
 <br>
 
-{!! Form::model($promocion,['route'=>['Principal.update', $promocion], 'method'=>'PUT', 'files'=>true])!!}
+{!! Form::model($promocion,['route'=>['principal.update', $promocion], 'method'=>'PUT', 'files'=>true])!!}
 
  @include('promo.form')
 

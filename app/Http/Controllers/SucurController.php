@@ -35,7 +35,7 @@ class SucurController extends Controller
        
         $sucursal->save();
 
-       return redirect()->route('sucursal.mostrarsucur');
+       return redirect()->route('sucursal.index');
     }
 
     public function show(sucursal $sucursal)
@@ -66,6 +66,5 @@ class SucurController extends Controller
         $sucursal->delete();
 
          return redirect()->route('sucursal.index');
-        return redirect()->route('sucursal.mostrarsucur');
     }
 }
