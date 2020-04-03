@@ -11,12 +11,12 @@
  
     <div class="form-group">
         {!!Form::label('cate', 'Categoria')!!}
-        {!!Form::text('cate', null,['class'=>'form-control'])!!}
+        {!!Form::text('cate', null,['class'=>'form-control d-none','id'=>'input-categoria'])!!}
 
-        <select id="cate" oninput="changeCategory(this.value)">
+        <select class="custom-select" id="cate" oninput="changeCategory(this.value)">
             <option value="">Elija la categoria</option>
             @foreach ($categorias as $c)
-                <option value="{{$c->idcate}}" id="{{$c->idcate}}">{{$c->catenom}}</option>
+                <option value="{{$c->idcate}}" id="pcat{{$c->idcate}}">{{$c->catenom}}</option>
             @endforeach
         </select>
     </div>
@@ -47,7 +47,8 @@
     </div>
 
 <script>
+
     function changeCategory(idc) {
-        alert(idc)
+        document.getElementById("input-categoria").value = idc;
     }
 </script>

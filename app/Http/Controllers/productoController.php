@@ -73,7 +73,7 @@ class productoController extends Controller
       
     
       return view ('altas.showprod', compact('producto'));
-
+      // print_r(compact('producto'));
 
     }
 

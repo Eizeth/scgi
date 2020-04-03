@@ -3,7 +3,7 @@
 namespace bodega\Http\Controllers;
 
 use Illuminate\Http\Request;
-use bodega\Promocion; 
+use bodega\promocion; 
 use bodega\Http\Requests\StorePromocionRequest;
 
 
@@ -35,23 +35,22 @@ class principalcontroller extends Controller
         $promocion->pfecha = $request->input('pfecha');
         $promocion->pnsesion = $request->input('pnsesion');
         $promocion->pdet = $request->input('pdet');
-       
         $promocion->save();
 
         return redirect()->route('principal.index');
     }
 
-   
-    public function show( Promocion $promocion)
-    {  
-     //$promocion = promocion::find($id);
-    // return $promocion;
 
-  // return view ('promo.show', compact('promocion'));
-      var_dump($promocion);
+    public function show(Promocion $principal){
+      //$promocion = promocion::find($id);
+      // return $promocion;
+
+      $promocion = $principal;
+      return view ('promo.show', compact('promocion'));
     }
 
-    
+
+
     public function edit( Promocion $promocion)
     {
          //  $promocion = promocion::find($id);
