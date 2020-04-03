@@ -4,13 +4,8 @@
 	<div class="row">
 		@foreach($productos as $producto)
 			<div class="col-sm">
-
 				<div class="card text-center" style="width: 18rem; margin-top:60px ">
 						<img style="height: 100px; width: 100px; margin: 25px" class="card-img-top mx-auto d-blck"  src="{{asset('images/'.$producto->imagen)}}" alt="">
-<<<<<<< HEAD
-=======
-
->>>>>>> 80046dc7b8e3aafc7f7463d31bec6aa2f36af6f8
 						<div class="card-body">
 						<h5 class="card-title">{{$producto->codigo}}</h5>
 						<p class="card-text">{{$producto->formula}}</p>

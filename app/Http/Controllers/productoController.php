@@ -4,6 +4,7 @@ namespace bodega\Http\Controllers;
 
 use Illuminate\Http\Request;
 use bodega\producto;
+use bodega\categorias;
 use bodega\Http\Requests\StoreProdRequest;
 
 class productoController extends Controller
@@ -18,6 +19,7 @@ class productoController extends Controller
 //$request->user()->authorizeRoles('admin');
 
       $productos = producto::all();
+      $categorias = categorias::all();
 
        return view('altas.mostrarprod', compact('productos'));
     }
@@ -25,7 +27,8 @@ class productoController extends Controller
    
     public function create()
     {
-        return view('altas.altaproducto');
+      $categorias = categorias::all();
+      return view('altas.altaproducto', compact('categorias'));
     //   return redirect()->route('common.errors',[$producto])->with('status','Se dio de alta el producto correctamente');
     }
 

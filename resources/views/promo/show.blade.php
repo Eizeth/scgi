@@ -11,23 +11,6 @@
 	</div>
 @endif
 <div class="text-center">
-<<<<<<< HEAD
-	<h1>{{$promocion->ptema}}</h1>
-	<p>{{$promocion->pcosto}}</p>
-	<h2>{{$promocion->pfecha}}</h2>
-	<p>{{$promocion->pnsesion}}</p>
-	<p>{{$promocion->pdetalles}}</p>
-
-	@if (Auth::user()->roleid == 1)
-		<a href="{{ route('principal.edit',$promocion->idpromo) }}" class="btn btn-primary">Editar</a>
-		<form action="{{ route('principal.destroy',$promocion->idpromo) }}" method="POST">
-			@csrf
-			@method('DELETE')
-			<button type="submit" class="btn btn-danger">Eliminar</button>
-		</form>
-	@endif
-</div>
-=======
 			
 				<h1>{{$promocion->ptema}}</h1>
 				<p>{{$promocion->pcosto}}</p>
@@ -43,6 +26,5 @@
 	<button type="submit" class="btn btn-danger">Eliminar</button>
 </form>
 		</div>	
->>>>>>> 80046dc7b8e3aafc7f7463d31bec6aa2f36af6f8
 
 @endsection

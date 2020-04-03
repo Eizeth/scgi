@@ -121,7 +121,7 @@
       <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecategorias" aria-expanded="true" aria-controls="collapsepromociones">
-          <i class="fas fa-fw fa-store"></i>
+          <i class="fas fa-fw fa-tag"></i>
           <span>Categorias</span>
         </a>
         <div id="collapsecategorias" class="collapse" data-parent="#accordionSidebar">
@@ -131,7 +131,7 @@
           </div>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item d-none">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseencargados" aria-expanded="true" aria-controls="collapsepromociones">
           <i class="fas fa-fw fa-store"></i>
           <span>Encargados</span>

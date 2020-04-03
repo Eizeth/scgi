@@ -12,13 +12,13 @@
     <div class="form-group">
         {!!Form::label('cate', 'Categoria')!!}
         {!!Form::text('cate', null,['class'=>'form-control'])!!}
-            <!--
-                <select id="cate" name="tipo" onchange="elegir_opcion(this);">
+
+        <select id="cate" oninput="changeCategory(this.value)">
             <option value="">Elija la categoria</option>
-            <option value="op1">Tonico</option>
-            <option value="op2">Polvo</option>
-            <option value="op3">Comprimido</option>
-            </select>-->
+            @foreach ($categorias as $c)
+                <option value="{{$c->idcate}}" id="{{$c->idcate}}">{{$c->catenom}}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="form-group">
@@ -46,4 +46,8 @@
         {!!Form::file('imagen')!!}
     </div>
 
-     
+<script>
+    function changeCategory(idc) {
+        alert(idc)
+    }
+</script>
