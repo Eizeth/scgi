@@ -30,6 +30,7 @@ Route::resource('/producto','productoController');
 Route::resource('/categorias','CategoriasController');
 Route::resource('/user','UserController');
 Route::resource('/encargados','EncargadosController');
+Route::resource('pedido','PedidoController');
 //Route::resource('/tareas', 'TareasController');
 Auth::routes();
 
