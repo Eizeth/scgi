@@ -33,7 +33,7 @@
 
     <div class="form-group">
         {!!Form::label('stock', 'stock')!!}
-        {!!Form::text('stock', null,['class'=>'form-control'])!!}
+        {!!Form::number('stock', null,['class'=>'form-control'])!!}
     </div>
 
     <div class="form-group">

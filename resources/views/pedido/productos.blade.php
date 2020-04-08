@@ -28,8 +28,9 @@
 				</ul>
 			</div>
 			<br><br><br>
+			@csrf
 			<div class="d-flex justify-content-center">
-				<button type="button" class="btn btn-outline-success" disabled>Solicitar productos</button>
+				<button type="button" class="btn btn-outline-success" id="solicitar-productos" onclick="updatePedido('send')" disabled>Solicitar productos</button>
 			</div>
 		</div>
 	</div>
@@ -37,9 +38,10 @@
 
 @section('javascript')
 	<script>
-		var userId = {!! auth()->id() !!};
+		var csrft = "{!! csrf_token() !!}";
+		var uid = {!! auth()->id() !!};
+		var requestProductsButton = document.getElementById("solicitar-productos");
 		var pedidoContainer = document.querySelector("#pedido-container ul");
-		// var pedido = {};
 
 		function addProduct(id, cantidad, codigo, nombre) {
 			if (cantidad > 0) {
@@ -47,16 +49,57 @@
 				producto.className = "list-group-item d-flex justify-content-between align-items-center";
 				producto.innerHTML = `<span class="badge badge-primary badge-pill">${cantidad}</span>
 									${codigo} | ${nombre}
-									<button type="button" class="btn btn-warning" onclick="deleteProducto(this.parentNode)">
+									<button type="button" class="btn btn-warning producto-pedido" title="${id}" value="${cantidad}" onclick="deleteProducto(this.parentNode)">
 										<span class="fa fa-trash"></span>
 									</button>`;
 				pedidoContainer.appendChild(producto);
+				updatePedido();
 			}
 		}
-
 		function deleteProducto(item) {
-			console.dir(item);
 			item.remove();
+			updatePedido();
+		}
+		function updatePedido(task) {
+			let productsArray = [];
+			for (let p of document.getElementsByClassName("producto-pedido")) {
+				let product = {
+					id: p.title,
+					cantidad: p.value
+				}
+				productsArray.push(product);
+			}
+			if (productsArray.length > 0) {
+				requestProductsButton.disabled = false;
+				requestProductsButton.className = "btn btn-success";
+			} else{
+				requestProductsButton.disabled = true;
+				requestProductsButton.className = "btn btn-outline-success";
+			}
+			if (task === "send") {
+				let d = new Date();
+				let pedido = {
+					userId: uid,
+					products: productsArray,
+					date: d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()
+				};
+				fetch("pedido", {
+					headers: {
+						"Content-Type": "application/json",
+						"Accept": "application/json, text-plain, */*",
+						"X-Requested-With": "XMLHttpRequest",
+						"X-CSRF-TOKEN": csrft
+					},
+					method: 'post',
+					credentials: "same-origin",
+					body: JSON.stringify(pedido)
+				}).then((response) => {
+					console.log(response.statusText);
+					alert("pedido creado, pase por sus productos")
+				}).catch(function(error) {
+					console.log(error);
+				});
+			}
 		}
 	</script>
 @endsection

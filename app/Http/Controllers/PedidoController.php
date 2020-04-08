@@ -5,83 +5,50 @@ namespace bodega\Http\Controllers;
 use bodega\Pedido;
 use bodega\producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class PedidoController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+class PedidoController extends Controller{
+    public function index(){
         $productos = producto::all();
-        return view('pedido.productos', compact('productos'));
+        $pedidos = Pedido::all();
+        if (Auth::user()->roleid == 1) {
+            foreach ($pedidos as $pedido) {
+                $pedido->productos = json_decode($pedido->productos);
+                foreach ($pedido->productos as $producto) {
+                    $producto->detail = producto::find($producto->id);
+                }
+            }
+            return view('pedido.pendientes', compact('pedidos'));
+        } else return view('pedido.productos', compact('productos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    public function create(){
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+        $pedido = new Pedido();
+        $pedido->userid = $request->userId;
+        $pedido->productos = json_encode($request->products);
+        $pedido->solicitado = $request->date;
+        $pedido->save();
+        // echo(json_encode($request->products));
+        return("stored");
+    }
+
+    public function show(Pedido $pedido){
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \bodega\Pedido  $pedido
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pedido $pedido)
-    {
+    public function edit(Pedido $pedido){
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \bodega\Pedido  $pedido
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pedido $pedido)
-    {
+    public function update(Request $request, Pedido $pedido){
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \bodega\Pedido  $pedido
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Pedido $pedido)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \bodega\Pedido  $pedido
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pedido $pedido)
-    {
+    public function destroy(Pedido $pedido){
         //
     }
 }

@@ -79,6 +79,19 @@
           </div>
         </div>
       </li>
+      <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecategorias" aria-expanded="true" aria-controls="collapsepromociones">
+          <i class="fas fa-fw fa-tag"></i>
+          <span>Categorias</span>
+        </a>
+        <div id="collapsecategorias" class="collapse" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="  {{ route('categorias.index') }} ">Ver lista</a>
+            <a class="collapse-item" href=" {{ route('categorias.create') }}   ">Agregar</a>
+          </div>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesucursales" aria-expanded="true" aria-controls="collapsesucursales">
           <i class="fas fa-fw fa-store"></i>
@@ -118,20 +131,6 @@
           </div>
         </div>
       </li>
-      <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecategorias" aria-expanded="true" aria-controls="collapsepromociones">
-          <i class="fas fa-fw fa-tag"></i>
-          <span>Categorias</span>
-        </a>
-        <div id="collapsecategorias" class="collapse" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="  {{ route('categorias.index') }} ">Ver lista</a>
-            <a class="collapse-item" href=" {{ route('categorias.create') }}   ">Agregar</a>
-          </div>
-        </div>
-      </li>
-      
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -197,7 +196,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" src="{{asset('images/l.jpg')}}">
               </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
