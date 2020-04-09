@@ -7,7 +7,8 @@
 				<div class="col-sm">
 					<div class="card text-center" style="width: 18rem; margin-top:60px ">
 						<div class="card-body">
-							
+							<h5>{{$pedido->user->name}}</h5>
+							<h3>{{$pedido->solicitado}}</h3>
 							<ul class="list-group">
 								@foreach($pedido->productos as $p)
 									<li class="list-group-item d-flex justify-content-between align-items-center">

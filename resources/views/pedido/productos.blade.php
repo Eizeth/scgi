@@ -22,15 +22,19 @@
 			@endforeach
 		</div>
 		<div class="w-25 p-3 card rounded">
-			<h2 class="text-center">Pedido</h1>
-			<div id="pedido-container">
-				<ul class="list-group">
-				</ul>
+			<h2 class="text-center">Pedido</h2>
+			<div id="pedido-container" style="padding: 15px">
+				<h5 class="text-center">{{ Auth::user()->name }}</h5>
+				<div id="pedido-container">
+					<ul class="list-group">
+					</ul>
+				</div>
+				<br>
 			</div>
-			<br><br><br>
 			@csrf
+			<div id="confirmacion-pedido"></div>
 			<div class="d-flex justify-content-center">
-				<button type="button" class="btn btn-outline-success" id="solicitar-productos" onclick="updatePedido('send')" disabled>Solicitar productos</button>
+				<a class="d-none" id="solicitar-productos" onclick="updatePedido('send')" role="button">Solicitar productos</a>
 			</div>
 		</div>
 	</div>
@@ -42,7 +46,7 @@
 		var uid = {!! auth()->id() !!};
 		var requestProductsButton = document.getElementById("solicitar-productos");
 		var pedidoContainer = document.querySelector("#pedido-container ul");
-
+		var confirmacion = document.getElementById("confirmacion-pedido");
 		function addProduct(id, cantidad, codigo, nombre) {
 			if (cantidad > 0) {
 				let producto = document.createElement("li");
@@ -74,7 +78,7 @@
 				requestProductsButton.className = "btn btn-success";
 			} else{
 				requestProductsButton.disabled = true;
-				requestProductsButton.className = "btn btn-outline-success";
+				requestProductsButton.className = "d-none";
 			}
 			if (task === "send") {
 				let d = new Date();
@@ -95,11 +99,26 @@
 					body: JSON.stringify(pedido)
 				}).then((response) => {
 					console.log(response.statusText);
-					alert("pedido creado, pase por sus productos")
+					confirmacion.innerHTML=`<div class="alert alert-success alert-dismissible fade show" role="alert">
+												<strong>¡Pedido creado!</strong>
+												<br>
+												No olvides pasar por el.
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>`;
+					html2canvas(document.getElementById("pedido-container")).then((canvas)=>{
+						requestProductsButton.onclick = "";
+						requestProductsButton.setAttribute('download', 'Ticket.png');
+						requestProductsButton.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+						requestProductsButton.innerHTML = "Descargar ticket";
+					});
 				}).catch(function(error) {
 					console.log(error);
 				});
 			}
 		}
+
 	</script>
 @endsection
+

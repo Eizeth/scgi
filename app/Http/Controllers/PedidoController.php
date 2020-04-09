@@ -4,6 +4,7 @@ namespace bodega\Http\Controllers;
 
 use bodega\Pedido;
 use bodega\producto;
+use bodega\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,7 @@ class PedidoController extends Controller{
                 foreach ($pedido->productos as $producto) {
                     $producto->detail = producto::find($producto->id);
                 }
+                $pedido->user = User::find($pedido->userid);
             }
             return view('pedido.pendientes', compact('pedidos'));
         } else return view('pedido.productos', compact('productos'));
