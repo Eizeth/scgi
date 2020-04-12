@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class PedidoController extends Controller{
     public function index(){
         $productos = producto::all();
-        $pedidos = Pedido::all();
+        $pedidos = Pedido::all()->where("estado", 0);
         if (Auth::user()->roleid == 1) {
             foreach ($pedidos as $pedido) {
                 $pedido->productos = json_decode($pedido->productos);
@@ -32,6 +32,7 @@ class PedidoController extends Controller{
         $pedido = new Pedido();
         $pedido->userid = $request->userId;
         $pedido->productos = json_encode($request->products);
+        $pedido->estado = 0;
         $pedido->solicitado = $request->date;
         $pedido->save();
         // echo(json_encode($request->products));
@@ -47,7 +48,18 @@ class PedidoController extends Controller{
     }
 
     public function update(Request $request, Pedido $pedido){
-        //
+        // var_dump($pedido);
+        $pedido = Pedido::find($pedido->idpedido);
+        foreach (json_decode($pedido->productos) as $p) {
+            var_dump($p);
+            $producto = producto::find($p->id);
+            $producto->stock = $producto->stock - $p->cantidad;
+            $producto->save();
+        }
+        $pedido->estado = 1;
+        $pedido->entregado = date("Y-m-d");
+        $pedido->save();
+        return redirect()->route('pedido.index')->with('status','Se entregó el producto');
     }
 
     public function destroy(Pedido $pedido){

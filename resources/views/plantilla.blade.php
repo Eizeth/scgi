@@ -56,6 +56,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             @if (Auth::user()->roleid == 1)
               <a class="collapse-item" href="{{ route('pedido.index') }}">Entregar</a>
+              <a class="collapse-item" href="{{ route('pedido.index') }}">Reporte</a>
             @endif
             @if (Auth::user()->roleid == 2)
               <a class="collapse-item" href="{{ route('pedido.index') }}">Nuevo pedido</a>

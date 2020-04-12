@@ -1,6 +1,11 @@
 @extends('plantilla')
 @section('title', 'Producto')
 @section('contenido')
+@if(session('status'))
+	<div class="alert alert-success">
+		{{ session('status')}}
+	</div>
+@endif
 	<div class="d-flex justify-content-between">
 		<div class="row">
 			@foreach($pedidos as $pedido)
@@ -18,7 +23,11 @@
 								@endforeach
 							</ul>
 							<br>
-							<button class="btn btn-success" onclick="alert({{$pedido->idpedido}})" type="button">Entregar</button>
+							<form action="{{ route('pedido.update',$pedido->idpedido) }}" method="POST">
+								@csrf
+								@method('PUT')
+								<button  class="btn btn-success" type="submit">Entregar</button>
+							</form>
 						</div>
 					</div>
 				</div>
