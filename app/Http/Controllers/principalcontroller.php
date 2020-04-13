@@ -50,22 +50,22 @@ class principalcontroller extends Controller
     }
 
 
-
-    public function edit( Promocion $promocion)
+    //                    Modelo     $solicitud, por ejemplo aquí es principal  (Route::resource('/principal', 'principalcontroller');)
+    public function edit( Promocion $principal)
     {
-         //  $promocion = promocion::find($id);
-   return view('promo.edit', compact('promocion'));
-
+      $promocion = $principal; //le dejo eso para que en tu vista ya notengas que cambiar donde dice promocion por principal
+      return view('promo.edit', compact('promocion'));
+      // dd($principal);
     }
 
    
-    public function update( Request $request, Promocion $promocion)
+    public function update( Request $request, Promocion $principal)
     {
      
        $promocion->fill($request->all());
        $promocion->save();
        //return 'Actualizado';
-      return redirect()->route('principal.show',[$promocion])->with('status','Se actualizo correctamente');
+      return redirect()->route('principal.show',[$principal])->with('status','Se actualizo correctamente');
     }
 
     

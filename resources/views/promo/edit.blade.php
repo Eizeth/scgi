@@ -16,7 +16,7 @@
 
 
 <br>
-<a href="{{ route('[principal.show',$promocion->idpromo) }}" class="btn btn-primary">Atras</a>
+<a href="{{ route('principal.show',$promocion->idpromo) }}" class="btn btn-primary">Atras</a>
 
 <br>
 

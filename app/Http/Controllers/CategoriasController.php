@@ -2,7 +2,7 @@
 
 namespace bodega\Http\Controllers;
 
-use bodega\Categorias;
+use bodega\categorias;
 use Illuminate\Http\Request;
 use bodega\Http\Requests\StoreCategoriaRequest;
 
@@ -11,7 +11,7 @@ class CategoriasController extends Controller
    
     public function index(Request $request)
     { 
-     $categorias = Categorias::all();
+     $categorias = categorias::all();
 
        return view('categ.index', compact('categorias'));
     }
@@ -23,8 +23,6 @@ class CategoriasController extends Controller
     {
         return view('categ.create');
     }
-
-    
 
 
     public function store(Request $request)
@@ -40,17 +38,16 @@ class CategoriasController extends Controller
 
     }
 
-
-    public function show(Categorias $categorias)
+    //Route::resource('/categorias','CategoriasController');
+    public function show(categorias $Categorias)
     {
-      
-     // return $categoria;
-
-    return view('categ.show', compact('categorias')); 
+     
+      //return $categorias;
+      return view('categ.show', compact('Categorias')); 
 
            }
 
-    public function edit(Categorias $categorias)
+    public function edit(categorias $categorias)
     {
 
         return view('categ.edit',compact('categorias'));
@@ -59,7 +56,7 @@ class CategoriasController extends Controller
 
 
     
-    public function update(Request $request, Categorias $categorias)
+    public function update(Request $request, categorias $categorias)
     {
       $categorias->fill($request->all()); 
       $categorias->save();
@@ -69,7 +66,7 @@ class CategoriasController extends Controller
 
 
 
-    public function destroy(Categorias $categorias)
+    public function destroy(categorias $categorias)
     {
         $categorias->delete();
         return redirect()->route('categorias.index');
