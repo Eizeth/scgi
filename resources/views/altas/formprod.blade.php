@@ -47,8 +47,11 @@
     </div>
 
 <script>
-
+    var catInput = document.getElementById("input-categoria");
+    if (catInput.value > 0) {
+        document.getElementById("pcat"+catInput.value).selected = true;
+    }
     function changeCategory(idc) {
-        document.getElementById("input-categoria").value = idc;
+        catInput.value = idc;
     }
 </script>

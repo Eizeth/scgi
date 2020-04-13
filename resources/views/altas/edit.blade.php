@@ -3,7 +3,6 @@
 @section('title', 'Editar producto')
 
 @section('contenido')
-br>
    @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

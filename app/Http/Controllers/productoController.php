@@ -70,8 +70,6 @@ class productoController extends Controller
      */
     public function show(producto $producto)
     {
-      
-    
       return view ('altas.showprod', compact('producto'));
       // print_r(compact('producto'));
 
@@ -80,7 +78,8 @@ class productoController extends Controller
    
     public function edit(producto $producto)
     {
-        return view('altas.edit',compact('producto'));
+      $categorias = categorias::all();
+      return view('altas.edit',compact('producto','categorias'));
     }
 
 /////////////////////////////////// ACTUALIZAR
