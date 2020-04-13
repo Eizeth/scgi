@@ -27,6 +27,7 @@ Route::get('/', function () {
 Route::resource('/principal', 'principalcontroller');
 Route::resource('/sucursal', 'SucurController');
 Route::resource('/producto','productoController');
+Route::get('reportes/producto', 'productoController@reporte')->name("reportes.producto");
 Route::resource('/categorias','CategoriasController');
 Route::resource('/user','UserController');
 Route::resource('/encargados','EncargadosController');

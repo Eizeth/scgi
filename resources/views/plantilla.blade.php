@@ -15,7 +15,7 @@
   <title>IBH</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -46,7 +46,19 @@
       <div class="sidebar-heading">
         Administrar
       </div>
-
+      @if (Auth::user()->roleid == 1)
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsereportes" aria-expanded="true" aria-controls="collapsereportes">
+            <i class="fas fa-fw fa-box"></i>
+            <span>Reportes</span>
+          </a>
+          <div id="collapsereportes" class="collapse" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="{{ route('reportes.producto') }}">Productos</a>
+            </div>
+          </div>
+        </li>
+      @endif
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsepedidos" aria-expanded="true" aria-controls="collapsepedidos">
           <i class="fas fa-fw fa-box"></i>
@@ -56,7 +68,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             @if (Auth::user()->roleid == 1)
               <a class="collapse-item" href="{{ route('pedido.index') }}">Entregar</a>
-              <a class="collapse-item" href="{{ route('pedido.index') }}">Reporte</a>
             @endif
             @if (Auth::user()->roleid == 2)
               <a class="collapse-item" href="{{ route('pedido.index') }}">Nuevo pedido</a>
@@ -265,7 +276,9 @@
   <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
   <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
+  <script src="{{ asset('vendor/datatables/dataTables.buttons.min.js') }}"></script>
+  <script src="{{ asset('vendor/datatables/buttons.print.min.js') }}"></script>
+  {{-- <script src="{{ asset('js/demo/datatables-demo.js') }}"></script> --}}
   <script src="{{ asset('js/image.min.js') }}"></script>
   @yield('javascript')
 </body>

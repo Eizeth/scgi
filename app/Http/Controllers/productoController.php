@@ -109,4 +109,11 @@ class productoController extends Controller
       $producto->delete();
         return redirect()->route('producto.index');
     }
+
+
+
+    public function reporte(){
+      $productos = producto::all();
+        return view('altas.reporte', compact('productos'));
+    }
 }
