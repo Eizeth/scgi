@@ -2,7 +2,7 @@
 @section('title', 'Producto')
 @section('contenido')
 	<div class="d-flex justify-content-between">
-		<div class="row">
+		<div style="flex-wrap: wrap;" class="d-flex">
 			@foreach($productos as $producto)
 				<div class="col-sm">
 					<div class="card text-center" style="width: 18rem; margin-top:60px ">
@@ -21,7 +21,7 @@
 				</div>
 			@endforeach
 		</div>
-		<div class="w-25 p-3 card rounded">
+		<div style="background-color: white" class="rounded shadow">
 			<h2 class="text-center">Pedido</h2>
 			<div id="pedido-container" style="padding: 15px">
 				<h5 class="text-center">{{ Auth::user()->name }}</h5>
@@ -50,10 +50,10 @@
 		function addProduct(id, cantidad, codigo, nombre) {
 			if (cantidad > 0) {
 				let producto = document.createElement("li");
-				producto.className = "list-group-item d-flex justify-content-between align-items-center";
-				producto.innerHTML = `<span class="badge badge-primary badge-pill">${cantidad}</span>
-									${codigo} | ${nombre}
-									<button type="button" class="btn btn-warning producto-pedido" title="${id}" value="${cantidad}" onclick="deleteProducto(this.parentNode)">
+				producto.className = "d-inline-flex justify-content-between align-items-center border rounded";
+				producto.innerHTML = `<span class="badge badge-primary badge-pill" style="margin: 10px">${cantidad}</span>
+									<p style="white-space: nowrap; margin-top: 10px"> ${codigo} | ${nombre} </p>
+									<button type="button" class="btn btn-warning producto-pedido" title="${id}" value="${cantidad}" onclick="deleteProducto(this.parentNode)" style="margin: 10px">
 										<span class="fa fa-trash"></span>
 									</button>`;
 				pedidoContainer.appendChild(producto);
@@ -107,7 +107,12 @@
 													<span aria-hidden="true">&times;</span>
 												</button>
 											</div>`;
-					html2canvas(document.getElementById("pedido-container")).then((canvas)=>{
+					html2canvas(document.getElementById("pedido-container"), {
+						scale: 3,
+						backgroundColor: "#ffffff",
+						allowTaint: true,
+						useCORS: true
+					}).then((canvas)=>{
 						requestProductsButton.onclick = "";
 						requestProductsButton.setAttribute('download', 'Ticket.png');
 						requestProductsButton.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
