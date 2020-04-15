@@ -5,9 +5,6 @@
 @section('contenido')
 
 <br>
-<a href="/home" class="btn btn-primary">Atras</a>
-
-<br>
 
 @if ($errors->any())
         <div class="alert alert-danger">

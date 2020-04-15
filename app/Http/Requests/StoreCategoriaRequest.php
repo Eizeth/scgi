@@ -24,7 +24,7 @@ class StoreCategoriaRequest extends FormRequest
     public function rules()
     {
          return [
-            'catenom'=>'required',
+            'catenom'=>'required|string',
             
         ];
     }

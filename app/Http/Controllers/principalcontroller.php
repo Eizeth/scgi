@@ -61,7 +61,7 @@ class principalcontroller extends Controller
    
     public function update( Request $request, Promocion $principal)
     {
-     
+      $promocion = $principal;
        $promocion->fill($request->all());
        $promocion->save();
        //return 'Actualizado';
@@ -69,8 +69,9 @@ class principalcontroller extends Controller
     }
 
     
-    public function destroy(Promocion $promocion)
+    public function destroy(Promocion $principal)
     {
+      $promocion = $principal;
         $promocion->delete();
          return redirect()->route('principal.index');
     }
