@@ -17,6 +17,11 @@ class PedidoController extends Controller{
                 $pedido->productos = json_decode($pedido->productos);
                 foreach ($pedido->productos as $producto) {
                     $producto->detail = producto::find($producto->id);
+                    if (is_null($producto->detail)) {
+                        $producto->detail = new \stdClass();
+                        $producto->detail->codigo = "";
+                        $producto->detail->nom = "Producto eliminado";
+                    }
                 }
                 $pedido->user = User::find($pedido->userid);
             }

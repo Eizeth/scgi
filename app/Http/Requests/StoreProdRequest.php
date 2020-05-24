@@ -25,12 +25,12 @@ class StoreProdRequest extends FormRequest
     {
         return [
             'codigo'=>'required',
-            'nom'=>'required',
+            'nom'=>'required|string',
             'cate'=>'required',
             'neto'=>'required|numeric',
             'cant'=>'required|numeric',
             'stock'=>'required|numeric',
-            'formula'=>'required',
+            'formula'=>'required|string',
             'imagen'=>'required|image',
             
         ];

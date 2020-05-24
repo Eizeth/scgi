@@ -25,10 +25,10 @@ class CategoriasController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreCategoriaRequest $request)
     {
         
-       $categorias = new Categorias();
+       $categorias = new categorias();
         $categorias->catenom = $request->input('catenom');
         
         $categorias->save();
@@ -39,16 +39,17 @@ class CategoriasController extends Controller
     }
 
     //Route::resource('/categorias','CategoriasController');
-    public function show(categorias $Categorias)
+    public function show(categorias $categoria)
     {
-     
+      $categorias = $categoria;
       //return $categorias;
-      return view('categ.show', compact('Categorias')); 
+     return view('categ.show', compact('categorias')); 
 
            }
 
-    public function edit(categorias $categorias)
+    public function edit(categorias $categoria)
     {
+      $categorias = $categoria;
 
         return view('categ.edit',compact('categorias'));
     }
@@ -56,8 +57,9 @@ class CategoriasController extends Controller
 
 
     
-    public function update(Request $request, categorias $categorias)
+    public function update(Request $request, categorias $categoria)
     {
+      $categorias = $categoria;
       $categorias->fill($request->all()); 
       $categorias->save();
        //return 'Actualizado';
@@ -66,8 +68,9 @@ class CategoriasController extends Controller
 
 
 
-    public function destroy(categorias $categorias)
+    public function destroy(categorias $categoria)
     {
+      $categorias = $categoria;
         $categorias->delete();
         return redirect()->route('categorias.index');
     }

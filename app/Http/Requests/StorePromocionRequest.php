@@ -24,8 +24,8 @@ class StorePromocionRequest extends FormRequest
     public function rules()
     {
         return [
-            'ptema' => 'required',
-            'pcosto' => 'required',
+            'ptema' => 'required|string',
+            'pcosto' => 'required|string',
             'pfecha' => 'required',
             //|after_or_equal:fechaInicial
             'pnsesion' => 'required',

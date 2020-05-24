@@ -11,7 +11,7 @@
  
     <div class="form-group">
         {!!Form::label('cate', 'Categoria')!!}
-        {!!Form::text('cate', null,['class'=>'form-control d-none','id'=>'input-categoria'])!!}
+        {!!Form::text('cate', null,['class'=>'form-control d-none','id'=>'input-categorias'])!!}
 
         <select class="custom-select" id="cate" oninput="changeCategory(this.value)">
             <option value="">Elija la categoria</option>
@@ -47,7 +47,7 @@
     </div>
 
 <script>
-    var catInput = document.getElementById("input-categoria");
+    var catInput = document.getElementById("input-categorias");
     if (catInput.value > 0) {
         document.getElementById("pcat"+catInput.value).selected = true;
     }
