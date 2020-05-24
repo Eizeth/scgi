@@ -46,7 +46,15 @@
 		var uid = {!! auth()->id() !!};
 		var requestProductsButton = document.getElementById("solicitar-productos");
 		var pedidoContainer = document.querySelector("#pedido-container ul");
-		var confirmacion = document.getElementById("confirmacion-pedido");
+        var confirmacion = document.getElementById("confirmacion-pedido");
+        /**
+         *
+         *
+         * @param {string} id ID del producto
+         * @param {int} cantidad cantidad de producto a solicitar
+         * @param {int} codigo  código del producto para que el usuario lo identifique rápidamente
+         * @param {string} nombre   nombre del producto
+         */
 		function addProduct(id, cantidad, codigo, nombre) {
 			if (cantidad > 0) {
 				let producto = document.createElement("li");
@@ -60,10 +68,20 @@
 				updatePedido();
 			}
 		}
+		/**
+         *
+         *
+         * @param {strind} item id (DOM) del elemento que se va eliminar
+         */
 		function deleteProducto(item) {
 			item.remove();
 			updatePedido();
 		}
+		/**
+         *
+         *
+         * @param {string} task indíca la tarea adicional que va realizar despues de crear el pedido, enviar (send) quiere decir que enviará el pedido al controlador para guardarlo
+         */
 		function updatePedido(task) {
 			let productsArray = [];
 			for (let p of document.getElementsByClassName("producto-pedido")) {

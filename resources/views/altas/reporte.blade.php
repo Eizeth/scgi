@@ -12,11 +12,11 @@
 			</thead>
 			<tbody>
 				@foreach($productos as $producto)
-					<tr>
-						<td>{{$producto->nom}}</td>
+							<td>{{$producto->nom}}</td>
 						<td>{{$producto->updated_at}}</td>
 						<td>{{$producto->stock}}</td>
-					</tr>
+					</tr><tr>
+
 				@endforeach
 			</tbody>
 		</table>
@@ -26,6 +26,11 @@
 @section('javascript')
 	<script>
 		$(document).ready(function() {
+            /**
+            *
+            * @param {string} id indica el elemento en donde se creará la tabla
+            *
+            */
 			$('#products-table').DataTable( {
 				dom: 'Bfrtip',
 				buttons: [{
